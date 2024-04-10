@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card" style="width: 600px;">
+                <div class="card-body">
+                    <div class="nav-tabs-navigation">
+                        <div class="nav-tabs-wrapper">
+                            <ul class="nav nav-tabs justify-content-center" role="tablist">
+                                <li *ngFor="let option of productOption; let index = index" class="nav-item">
+                                    <a class="nav-link custom-tab" [class.active]="index === activeTabIndex" (click)="changeHandler(index)" data-toggle="tab" role="tab">
+                                        {{ option.label }}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="my-tab-content" class="tab-content">
+                <ng-container *ngComponentOutlet="productComponent"></ng-container>
+            </div>
+        </div>
+    </div>
+</div>

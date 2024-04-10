@@ -1,0 +1,114 @@
+<div class="main-content">
+    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-fussion">
+        <p style="color: #fff; font-size: 1.5em;"><strong>Please wait...</strong></p>
+    </ngx-spinner>
+    <div class="row">
+        <div class="col-md-12">
+            <label (click)="back()" class="btn-back h6 p-2 pr-3" style="cursor:pointer">
+                <i class="fa fa-chevron-left m-1" aria-hidden="true"></i>
+                Back
+            </label>
+        </div>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <form [formGroup]="companyForm">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="name"> Company Name</label>
+                                            <input type="text" id="name" class="form-control" placeholder="company name"
+                                                formControlName="name" [ngClass]="{ 'is-invalid': submitted && companyControl.name.errors }">
+                                            <div *ngIf="submitted && companyControl.name.errors" class="invalid-feedback">
+                                                <div *ngIf="companyControl.name.errors.required">
+                                                    This field is mandatory
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="gstin"> GSTIN</label>
+                                            <input type="text" formControlName="gstin" id="gstin" class="form-control"
+                                                placeholder="gstin" [ngClass]="{ 'is-invalid': submitted && companyControl.gstin.errors }">
+                                            <div *ngIf="submitted && companyControl.gstin.errors" class="invalid-feedback">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="text" id="email" class="form-control" placeholder="email"
+                                                formControlName="email" [ngClass]="{ 'is-invalid': submitted && companyControl.email.errors }">
+                                            <div *ngIf="submitted && companyControl.email.errors" class="invalid-feedback">
+                                                <div *ngIf="companyControl.email.errors.required">
+                                                    This field is mandatory
+                                                </div>
+                                                <div *ngIf="companyControl.email.errors.email">
+                                                    Enter valid email address
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="pincode">Pincode</label>
+                                            <input type="text" id="pincode" class="form-control" placeholder="pincode"
+                                                formControlName="pincode">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div formArrayName="phone">
+                                            <div *ngFor="let phon of phones.controls; let i = index;" class="d-flex">
+                                                <div class="form-group w-100">
+                                                    <div [hidden]="i !==0">
+                                                        <label for="Phone" >Phone </label>
+                                                        <span>
+                                                            <i class="fa fa-plus-circle pull-right m-0" (click)="addPhone()" style="font-size:24px"></i>
+                                                        </span>
+                                                    </div>
+                                                    <input type="text"  id="phone" class="form-control" placeholder="Enter phone number" [formControlName]="i" [ngClass]="{ 'is-invalid': submitted && phon.errors }"/>
+                                                    <div *ngIf="submitted && phon.errors" class="invalid-feedback">
+                                                        <div *ngIf="phon.errors.required">This field is mandatory</div>
+                                                        <div *ngIf="phon.errors.pattern">This field is number only</div>
+                                                        <div *ngIf="phon.errors.minlength || phon.errors.maxlength">Enter 10 digit phone number</div>
+                                                    </div>
+                                                </div> 
+                                                <div [hidden]="i === 0">
+                                                    <span (click)="removePhone(i)"><i class="fa fa-minus-circle"
+                                                        style="color:red;size: 35px;margin-left:100%;margin-top:43%;font-size: 22px;"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Address</label>
+                                            <textarea formControlName="address" class="form-control"
+                                                placeholder="Address" style="line-height: 47px;"
+                                                [ngClass]="{ 'is-invalid': submitted && companyControl.address.errors }">
+                                            </textarea>
+                                            <div *ngIf="submitted && companyControl.address.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="companyControl.address.errors.required">
+                                                    This field is mandatory
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-item-center justify-content-center">
+                            <div class="form-group">
+                                <button type="button" class="btn btn-round btn-warning" (click)="onSave()">Save</button>
+                            </div>     
+                        </div> 
+                    </form>    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

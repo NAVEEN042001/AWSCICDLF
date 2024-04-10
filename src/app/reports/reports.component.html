@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="w-100 d-flex justify-content-center">
+        <div class="card" style="width: 400px;">
+            <div class="card-body">
+                <div class="nav-tabs-navigation">
+                    <div class="nav-tabs-wrapper">
+                        <ul class="nav nav-tabs justify-content-center" role="tablist">
+                            <li *ngFor="let option of reportOption; let index = index" class="nav-item">
+                                <a class="nav-link custom-tab" [class.active]="index === activeTabIndex" (click)="changeHandler(index)" data-toggle="tab" role="tab">
+                                    {{ option.label }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="my-tab-content" class="tab-content">
+                <ng-container *ngComponentOutlet="reportComponent"></ng-container>
+            </div>
+        </div>
+    </div>
+</div>

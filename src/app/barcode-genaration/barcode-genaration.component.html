@@ -1,0 +1,64 @@
+<div class="container">
+    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-fussion">
+        <p style="color: #fff; font-size: 1.5em;"><strong>Please wait...</strong></p>
+    </ngx-spinner>
+    <form [formGroup]="barcodeForm" (ngSubmit)="this[btnButton.method]()">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-4 offset-sm-4">
+                        <div class="form-group">
+                            <label for="item">Item</label>
+                            <ng-select [items]="items" bindLabel="itemLabel" bindValue="_id"
+                                placeholder="-- choose item --" formControlName="item" [ngClass]="{ 'is-invalid' : submitted && barcodeControl.item.errors}">
+                            </ng-select>
+                            <div *ngIf="submitted && barcodeControl.item.errors" class="text-danger">
+                                <div *ngIf="barcodeControl.item.errors.required">This field is mandatory.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 offset-sm-4">
+                        <div class="form-group">
+                            <label for="size">Size</label>
+                            <ng-select [items]="sizes" bindLabel="name" bindValue="_id"
+                                placeholder="-- choose size --" formControlName="size" [ngClass]="{ 'is-invalid' : submitted && barcodeControl.size.errors}">
+                            </ng-select>
+                            <div *ngIf="submitted && barcodeControl.size.errors" class="text-danger">
+                                <div *ngIf="barcodeControl.size.errors.required">This feild is mandatory.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 offset-sm-4">
+                        <div class="form-group">
+                            <label for="color">Colour</label>
+                            <ng-select [items]="colors" bindLabel="name" bindValue="_id"
+                                placeholder="-- choose color --" formControlName="color">
+                            </ng-select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 offset-sm-4">
+                        <div class="form-group">
+                            <label for="price">Price</label>
+                            <input type="number" class="form-control" formControlName="price"
+                            placeholder="Enter item price" [ngClass]="{ 'is-invalid' : submitted && barcodeControl.price.errors}">
+                            <div *ngIf="submitted && barcodeControl.price.errors" class="text-danger">
+                                <div *ngIf="barcodeControl.price.errors.required">This feild is mandatory.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3  offset-mt-4">
+                    <div class="col-md-12 btn-noLabel text-center">
+                        <button type="submit" class="btn btn-round btn-warning">{{ btnButton.label }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

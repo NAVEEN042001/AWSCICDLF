@@ -1,0 +1,29 @@
+<form [formGroup]="salesDailyReportForm" (ngSubmit)="exportexcel()">
+    <div class="row">
+        <div class="col-md-10 ml-auto mr-auto">
+            <div class="card">
+                <div class="card-body">
+                    <div class="col-md-12">
+                        <div class="col-md-5 ml-auto mr-auto">
+                            <div class="form-group">
+                                <label for="dateSel">Select the Date</label>
+                                <input type="date" name="dateSel" formControlName="dateSel" class="form-control" [max]="todayDate"
+                                 [ngClass]="{ 'is-invalid': submitted && dailySalesControl.dateSel.errors}">
+                                <div *ngIf="submitted && dailySalesControl.dateSel.errors" class="invalid-feedback">
+                                    <div *ngIf="dailySalesControl.dateSel.errors.required">
+                                        This field is mandatory
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 text-center">
+                                <button type="submit" class="btn btn-success btn-round">Download</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

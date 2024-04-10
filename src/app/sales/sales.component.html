@@ -1,0 +1,149 @@
+<div class="container">
+      <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-fussion">
+        <p style="color: #fff; font-size: 1.5em;"><strong>Please wait...</strong></p>
+    </ngx-spinner>
+    <!-- <div class="card">
+        <div class="card-body">
+            <form [formGroup]="saleItem">
+            <div class="row">
+                <div class="col-md-3">
+                    <label>item</label>
+                    <ng-select [items]="items" bindLabel="shortcode" bindValue="_id"
+                    formControlName="item"  placeholder="-- choose item --">
+                    </ng-select>
+                </div>
+                <div class="col-md-3">
+                    <label>Size</label>
+                    <ng-select [items]="sizes" bindLabel="name" bindValue="_id"
+                    formControlName="size"  placeholder="-- choose size --">
+                    </ng-select>
+                </div>
+                <div class="col-md-2">
+                    <label>Price</label>
+                    <input type="number" formControlName="price" class="form-control" (input)="totalAmount()">
+                </div>
+                <div class="col-md-2">
+                    <label>Quantity</label>
+                    <input type="number" formControlName="quantity" class="form-control" (input)="totalAmount()">
+                </div>
+                <div class="col-md-2">
+                    <label>Amount</label>
+                    <input type="number" formControlName="amount" class="form-control" disabled>
+                </div> 
+            </div>
+            <div class="row mt-3  offset-mt-4">
+                <div class="col-md-12 btn-noLabel text-right">
+                        <button type="button" class="btn btn-round btn-warning" (click)="addSale()">Add Item</button>
+                    
+                        <button type="button" class="btn btn-round" (click)="itemReset()">reset</button>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div> -->
+    <div  class="card">
+        <div  class="card-body" #billCard>
+          <div class="row">
+              <div class="col-md-12 text-center cash" style="margin-top: 20px;">
+                  <!-- Company Details -->
+                  <h1 style="margin-right: 20px;" >{{company?.name}}</h1>
+                  <p style="margin-right: 20px;">{{company?.address}}</p>
+                  <p style="margin-right: 20px;">{{company?.phone}}</p>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-12 text-center cash" style="margin-top: 20px; font-weight: bold; font-size: 20px;">
+                  <p>CASH BILL</p>
+              </div>
+          </div>
+          <form [formGroup]="salesForm">
+                <div class="col-md-6 ">
+                    <p style="font-weight: bold; margin-left: 20px;">Bill No: {{salesForm.get('code').value}}</p>
+                </div>
+                <div class="col-md-6 ">
+                    <p style="font-weight: bold; margin-left: 20px;">Date: {{ formatCurrentDate() }}</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <div class="form-group">
+                            <label style="font-weight: 400; margin-left: 20px;" for="customer_phone">Customer No</label>
+                                <input style=" margin-left: 20px;" type="text" id="customer_phone" class="form-control" placeholder="Enter Customer No" formControlName="customer_phone"
+                                [ngClass]="{ 'is-invalid': submitted && salesControl.customer_phone.errors }">
+                                <div *ngIf="submitted && salesControl.customer_phone.errors" class="invalid-feedback">
+                                <div *ngIf="salesControl.customer_phone.errors">Enter valid phone number</div>
+                                </div>
+                        </div> 
+                    </div>
+                    <div class="col-md-6"></div>
+                    <div class="col-md-2">
+                    <!-- <span class="btn-place" style="margin-top: -70px;">
+                        <button type="button" class="btn btn-round btn-sm btn-warning" (click)="addSale()">+Add New</button>
+                    </span> -->
+                </div>
+                </div>
+                <div class="row" style="margin-top: 30px;">
+                    <div class="col-md-12 ml-auto mr-auto">
+                      <table datatable class="table table-striped text-center">
+                        <thead>
+                          <tr>
+                            <th class="with-border-bottom">Item</th>
+                            <th class="with-border-bottom">Size</th>
+                            <th class="with-border-bottom">Quantity</th>
+                            <th class="with-border-bottom">Amount</th>
+                            <!-- <th class="with-border-bottom"></th> -->
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <ng-container *ngFor="let saleItem of sale_items.controls; let i = index">
+                            <tr class="shaded-row">
+                              <!-- Assuming each control in the sale_items FormArray is a FormGroup -->
+                              <td>{{ getItemName(saleItem.get('item').value) }}</td>
+                              <td>{{ getSizeName(saleItem.get('size').value) }}</td>
+                              <td>{{ saleItem.get('quantity').value }}</td>
+                              <td>{{ saleItem.get('amount').value }}</td>
+                              <td>
+                                <span (click)="removeItem(i)"><i class="fa fa-minus-circle"
+                                    style="color:red;size: 35px;font-size: 22px;"></i></span>
+                              </td>
+                            </tr>
+                          </ng-container>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  
+                  
+                <div class="col-md-6 text-left">
+                    <p style="font-weight: bold; margin-left: 20px; margin-top: 10px;">Total Quantity: {{ salesForm.get('total_quantity').value }}</p>
+                </div>
+                <div class="col-md-6 text-left">
+                    <p style="font-weight: bold; margin-left: 20px;">Total Amount: {{ salesForm.get('total_amount').value }}</p>
+                </div>
+                <div class="col-md-2 text-left">
+                    <label  style="font-weight: 400; margin-left: 20px;" for="discount">Discount (%)</label>
+                    <input type="number" style=" margin-left: 20px;" id="discount" class="form-control" formControlName="discount" (input)="calculateDiscount()">
+                    <p style="font-weight: bold; margin-left: 20px;margin-top: 10Px;">Discount: {{ salesForm.get('discount').value }} %</p>
+                </div>
+            <div class="row">
+                <div class="col-md-12 text-center cash">
+                    <p style="font-weight: bold; font-size: 25px; margin-top: 15px;">Rs.{{ salesForm.get('bill_amount').value }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center cash">
+                    <p style="font-weight: bold; margin-top:-10px; ">THANK YOU VISIT AGAIN</p>
+                </div>
+            </div>
+            <div #hide class="card-body">
+                <div class="row">
+                    <div class="col-md-6 text-left">
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <button class="btn btn-primary" (click)="printBill()">Print Bill</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+       </div>   
+      </div>
+  </div>

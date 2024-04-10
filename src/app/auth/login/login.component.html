@@ -1,0 +1,62 @@
+<div class="wrapper wrapper-full-page"style="min-height:84vh;">
+    <div class="full-page" filter-color="black" data-image="./assets/img/bg-main-2.png">
+      <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
+      <div class="row" style="margin: 130px 20px;">
+        <div class="illu col-md-6 d-flex justify-content-center">
+          <!-- <img src="../../../assets/img/illu1.png" alt="illustration" style="max-width: 65%;margin: 0px 40px;"> -->
+        </div>
+        <div class="content col-md-6"> 
+          <div class="container">
+            <div class="col-lg-8">
+              <!-- <form  #f="ngForm" novalidate (ngSubmit)="onLogin(f.value, f.valid)">   -->
+              <form class="form" (submit)="onLogin(loginForm)" #loginForm="ngForm" method="" action="">  
+                <div class="card card-login">
+                  <div class="card-header ">
+                    <div class="card-header ">
+                      <h2 class="mb-2 font-weight-bold">Sign in</h2>
+                      <h4 class="m-0">Welcome to <span class="font-weight-bold">ABSSOLUTION</span></h4>
+                      <!-- <h3 class="header text-center">ION-STAR</h3> -->
+                    </div>                               
+                  </div>
+                  <div class="card-body pl-4 pr-4">
+                    <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+                      <input type="email" class="form-control" placeholder="E-mail" (focus)="focus=true" (blur)="focus=false" name="email" ngModel #emailInput="ngModel" ngplaceholder="E-Mail" required #email="ngModel" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" style="height: 50px;background-color: #f6f6f7;border: none;"> 
+                    </div>
+                    <div class="input-group" [ngClass]="{'input-group-focus':focus1===true}">
+                      <input type="password" placeholder="Password" class="form-control" (focus)="focus1=true" (blur)="focus1=false" name="password" ngModel placeholder="Password" #passwordInput="ngModel" required validateEqual="confirmPassword" reverse="true" style="height: 50px;background-color: #f6f6f7;border: none;">
+                    </div>
+                    <div class="text-right">
+                      <label for="">Forgot Password?</label>
+                    </div>
+                  </div>
+                  <div style="text-align: center;">
+                  </div>
+                  <div *ngIf="this.valid == false" style="color: #e5515a; padding-left: 7%;">
+                    Invalid email or password
+                  </div>
+                  <div class="card-footer ">
+                    <button type="submit" *ngIf="!isLoading"  class="btn btn-warning btn-round btn-block mb-3" style="height: 45px;">LOGIN </button> 
+                  </div>
+                  <div class="text-center">
+                    <p>Not Registered Yet? <span class="font-weight-bold" style="color: #e5515a;">Create an account</span></p>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+      <footer class="footer footer-black  footer-white ">
+        <div class="container">
+          <div class="row">
+            <div class="credits ml-auto">
+              <span class="copyright">
+                &copy; {{test | date: 'yyyy'}}, made with <i class="fa fa-heart heart"></i> by ABS SOLUTION
+              </span>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>

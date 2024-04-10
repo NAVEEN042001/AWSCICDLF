@@ -1,0 +1,149 @@
+.form-rounded {
+  border-radius: 8px;
+}
+
+.btn-noLabel {
+  margin-top: -8px;
+}
+
+.btn-noLabel-inline {
+  padding-top: 22px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse; border-spacing: 0;
+}
+
+th, td {
+  vertical-align: middle;
+  align-content: center;
+}
+
+.content-editable-td {
+  /* width: 100%; */
+  padding: 8px;
+  margin: 0px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border: transparent;
+  text-align: center;
+}
+
+.invalid-feedback-td {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: #dc3545;
+}
+
+.st {
+  margin-left: 1%;
+}
+
+.a {
+  display: inline;
+}
+
+svg:focus {
+   outline: 0;
+}
+
+.custom-input-group {
+  padding: 0;
+  display: flex;
+  font-size: 13px;
+}
+
+.custom-input {
+  padding: 0.5rem;
+  background-color: rgb(224, 224, 233);
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.custom-input label {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  background-color: #fff;
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+}
+
+.cus-btn {
+  margin: 0 !important;
+  margin-bottom: 0 !important;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+.custom-input span {
+  margin-left: 2px;
+} 
+
+
+.btn-sml {
+  padding: 0px 0px;
+  font-size: 9px;
+  border-radius: 8px;
+  margin: 0px;
+  margin-left: 7px;
+}
+
+a.nav-link.active.nav-new-link {
+  /* background-color: #364254 !important; */
+  background-color: #007BFF !important;
+  border-radius: 10px;
+  color: white !important;
+  padding: 10px 20px;
+}
+
+.tab-new-nav {
+  background-color: #fff;
+  padding: 10px 0px;
+  border-radius: 14px;
+  border-bottom: none;
+}
+
+.ng-select .ng-select-container{
+  border-radius: 8px !important;
+  border: 1.8px solid #DDDDDD !important;
+  padding: 4px 0px !important;
+}
+
+.cus-btn{
+  margin: 0 !important;
+  margin-bottom: 0 !important;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  height: 40px;
+  border: none;
+  padding: 0px 15px;
+  font-size: 14px;
+}
+
+.custom-input span {
+  margin-left: 2px;
+}
+
+label.uload {
+  background-color: gainsboro;
+  padding: 10px 15px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+  font-size: 14px;
+  font-weight: 1000;
+  color: #707173;
+}
+
+.custom-input.tload {
+  background-color: #fff;
+  max-width: 450px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: 1px solid #d6d6d6;
+}

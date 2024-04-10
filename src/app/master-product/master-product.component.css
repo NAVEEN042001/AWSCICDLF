@@ -1,0 +1,19 @@
+.custom-tab {
+    border: none;
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.custom-tab.active {
+    border-bottom: 2px solid #2306fd;
+}
+
+.nav-tabs {
+    border-bottom: none;
+}
+
+.nav-link {
+    color: #333; 
+    cursor: pointer;
+}

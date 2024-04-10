@@ -1,0 +1,35 @@
+/* Add custom styles for the modal */
+#productModal .modal-dialog {
+    max-width: 800px; /* Set the maximum width of the modal */
+}
+
+#productModal .modal-content {
+    border-radius: 10px; /* Add border-radius to round the corners of the modal */
+}
+
+#productModal .modal-header {
+    background-color: #f8f9fa; /* Change the background color of the modal header */
+    border-bottom: none; /* Remove the bottom border of the modal header */
+}
+
+#productModal .modal-title {
+    color: #333; /* Change the color of the modal title */
+}
+
+#productModal .modal-body {
+    padding: 20px; /* Add padding to the modal body */
+}
+
+#productModal .form-group {
+    margin-bottom: 20px; /* Add margin between form groups */
+}
+
+#productModal .btn {
+    border-radius: 20px; /* Add border-radius to round the corners of buttons */
+    min-width: 120px; /* Set the minimum width of buttons */
+    margin-right: 10px; /* Add margin between buttons */
+}
+
+#productModal .btn-round {
+    border-radius: 20px; /* Add border-radius to round the corners of round buttons */
+}
